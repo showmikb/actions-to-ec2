@@ -23,13 +23,15 @@ jobs:
           REMOTE_USER: ${{ secrets.USERNAME }}
           TARGET: ${{ secrets.TARGET_DIR }}
           
-      - name: Post Deploy
-        uses: appleboy/ssh-action@master
+      - name: AWS SSM Send-Command Action
+        uses: nohmad/aws-ssm-send-command-action@v1
         with:
-            host: ${{ secrets.HOST_DNS }}
-            username: ${{ secrets.USERNAME }}
-            key: ${{ secrets.EC2_SSH_KEY }}
-            port: 22
-            script: | 
-              ls /tmp/ \;
-            
+          # AWS_ACCESS_KEY_ID
+          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          # AWS_SECRET_ACCESS_KEY
+          aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          # AWS_REGION
+          aws-region: "us-east-1"
+          # Target Instances
+          targets: i-040f023335ab0736c
+          parameters: ls -larth /tmp/
