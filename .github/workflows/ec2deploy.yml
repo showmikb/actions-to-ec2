@@ -22,16 +22,15 @@ jobs:
           REMOTE_HOST: ${{ secrets.HOST_DNS }}
           REMOTE_USER: ${{ secrets.USERNAME }}
           TARGET: ${{ secrets.TARGET_DIR }}
-          
-      - name: AWS SSM Send-Command Action
-        uses: nohmad/aws-ssm-send-command-action@v1
+      
+      - name: AWS SSM Send-Command
+        uses: peterkimzz/aws-ssm-send-command@master
+        id: ssm
         with:
-          # AWS_ACCESS_KEY_ID
+          aws-region: us-east-1
           aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
-          # AWS_SECRET_ACCESS_KEY
           aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-          # AWS_REGION
-          aws-region: "us-east-1"
-          # Target Instances
-          targets: i-040f023335ab0736c
-          parameters: ls -larth /tmp/
+          instance-ids: i-040f023335ab0736c
+          working-directory: /home/ubuntu/application
+          command: ls -al
+ 
