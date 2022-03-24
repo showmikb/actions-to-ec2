@@ -32,4 +32,3 @@ jobs:
           aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
           instance-ids: i-0411b934cff71caf0
           command: echo "hello world"
- 
