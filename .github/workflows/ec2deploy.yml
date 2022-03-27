@@ -36,6 +36,9 @@ jobs:
           aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
           instance-ids: i-0749931c54a9aa0b2
           command: |
+            sudo yum install git -y
+            pip-3.7 install aws-parallelcluster==2.10.2 --user
+            export PATH='/sbin:/bin:/usr/sbin:/usr/bin:~/.local/bin/'
             git clone https://github.com/showmikb/actions-to-ec2.git
             cd actions-to-ec2
             sh script.sh
