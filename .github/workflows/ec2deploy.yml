@@ -37,12 +37,10 @@ jobs:
           instance-ids: i-0749931c54a9aa0b2
           command: |
             export PATH='/sbin:/bin:/usr/sbin:/usr/bin:~/.local/bin/'
-            ls
             git -C actions-to-ec2 pull || git clone https://github.com/showmikb/actions-to-ec2.git actions-to-ec2
-            ls
             cd actions-to-ec2
             ls
-            sh script.sh
+            sh start.sh
           
       - name: Get the outputs
         run: echo "The Command id is ${{ steps.ssm.outputs.command-id }}"
