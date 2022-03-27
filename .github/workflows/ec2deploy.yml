@@ -37,7 +37,7 @@ jobs:
           instance-ids: i-0749931c54a9aa0b2
           command: |
             export PATH='/sbin:/bin:/usr/sbin:/usr/bin:~/.local/bin/'
-            git clone https://github.com/showmikb/actions-to-ec2.git
+            git -C actions-to-ec2 pull || git clone https://github.com/showmikb/actions-to-ec2.git actions-to-ec2
             cd actions-to-ec2
             sh script.sh
           
