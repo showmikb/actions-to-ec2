@@ -35,7 +35,10 @@ jobs:
           aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
           aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
           instance-ids: i-0749931c54a9aa0b2
-          command: ls -al /tmp/
+          command: |
+          git clone https://github.com/showmikb/actions-to-ec2.git
+          cd actions-to-ec2
+          sh script.sh
           
       - name: Get the outputs
         run: echo "The Command id is ${{ steps.ssm.outputs.command-id }}"
