@@ -1,3 +1,4 @@
+export PATH='/sbin:/bin:/usr/sbin:/usr/bin:~/.local/bin/'
 GIT_COMMIT_ID=`git rev-parse HEAD`
 echo "The value is \$GIT_COMMIT_ID"
 FILE_NAME=`git diff-tree --no-commit-id --name-only -r \$GIT_COMMIT_ID`
