@@ -40,7 +40,7 @@ jobs:
             git -C actions-to-ec2 pull || git clone https://github.com/showmikb/actions-to-ec2.git actions-to-ec2
             cd actions-to-ec2
             ls
-            sh start.sh
+            ./start.sh
           
       - name: Get the outputs
         run: echo "The Command id is ${{ steps.ssm.outputs.command-id }}"
